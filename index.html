@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jueguito</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    
+    <header class="header">
+        <p class="header__title">Simon Says!</p>
+        <p class="header__social"><i class="fab fa-github-alt"></i><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i></p>
+    </header>
+    
+    <section class="game">
+        <div class="game__button-container">
+            <div class="game__button game__button--top-left"></div>
+            <div class="game__button game__button--top-right"></div>
+            <div class="game__button game__button--bottom-left"></div>
+            <div class="game__button game__button--bottom-right"></div>
+        </div>
+    </section>
+    
+    <section class="menu">
+        <button class="menu__button">Start!</button>
+    </section>
+    
+    <div class="footer">
+        <!-- <p class="footer__authors">Created by <span class="link">@dsouls889</span> & <span class="link">@Panchito</span></p> -->
+        <p class="footer__level">1</p>
+    </div>
+    
+    <script src="js/window.js"></script>
+    <script src="https://kit.fontawesome.com/01c6b4051b.js" crossorigin="anonymous"></script>
+    <script>
+        let startButton = document.querySelector(".menu__button")
+        let menu = document.querySelector(".menu")
+
+        startButton.addEventListener("click", () => menu.classList.add("invisible"))
+    </script>
+</body>
+
+</html>
