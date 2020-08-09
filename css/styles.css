@@ -43,11 +43,12 @@ body {
 
 .header__social {
     width: 100px;
+    margin: 20px;
     display: flex;
     justify-content: space-between;
     font-size: 28px;
     position: absolute;
-    right: 20px
+    right: 0
 }
 
 .header__social:hover {
