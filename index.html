@@ -17,10 +17,10 @@
     
     <section class="game">
         <div class="game__button-container">
-            <div class="game__button game__button--top-left"></div>
-            <div class="game__button game__button--top-right"></div>
-            <div class="game__button game__button--bottom-left"></div>
-            <div class="game__button game__button--bottom-right"></div>
+            <div class="game__button color1"></div>
+            <div class="game__button color2"></div>
+            <div class="game__button color3"></div>
+            <div class="game__button color4"></div>
         </div>
     </section>
     
@@ -30,17 +30,12 @@
     
     <div class="footer">
         <!-- <p class="footer__authors">Created by <span class="link">@dsouls889</span> & <span class="link">@Panchito</span></p> -->
-        <p class="footer__level">1</p>
+        <p class="footer__level">0</p>
     </div>
     
     <script src="js/window.js"></script>
     <script src="https://kit.fontawesome.com/01c6b4051b.js" crossorigin="anonymous"></script>
-    <script>
-        let startButton = document.querySelector(".menu__button")
-        let menu = document.querySelector(".menu")
-
-        startButton.addEventListener("click", () => menu.classList.add("invisible"))
-    </script>
+    <script src="js/game.js"></script>
 </body>
 
 </html>

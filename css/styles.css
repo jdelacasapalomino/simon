@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@700&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
 
 html,
 body {
@@ -22,20 +21,19 @@ body {
     right: 0;
     left: 0;
     background-color: #383a3e;
-    -webkit-box-shadow: 0px 4px 4px 1px rgba(0,0,0,0.1);
-    -moz-box-shadow: 0px 4px 4px 1px rgba(0,0,0,0.1);
-    box-shadow: 0px 4px 4px 1px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 4px 1px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: space-between;
     align-items: center;
-
 }
 
 .header__title {
     height: 25px;
     margin: 20px;
     text-transform: uppercase;
-    font-family: 'Mulish', sans-serif;
+    font-family: "Mulish", sans-serif;
     font-size: 20px;
     display: flex;
     justify-content: space-between;
@@ -81,23 +79,6 @@ body {
 .game__button {
     width: 50%;
     height: 50%;
-}
-
-.game__button.game__button--top-left {
-    border-top-left-radius: 100%;
-    background-color: #e8323d;
-}
-
-.game__button.game__button--top-right {
-    background-color: #429cd9;
-}
-
-.game__button.game__button--bottom-left {
-    background-color: #f7b807;
-}
-
-.game__button.game__button--bottom-right {
-    background-color: #60b935;
 }
 
 .menu {
@@ -168,4 +149,36 @@ body {
 
 .invisible {
     display: none;
+}
+
+.color1 {
+    background-color: #e8323d;
+}
+
+.color1.light {
+    background-color: #eb7c83;
+}
+
+.color2 {
+    background-color: #429cd9;
+}
+
+.color2.light {
+    background-color: #8ebbda;
+}
+
+.color3 {
+    background-color: #f7b807;
+}
+
+.color3.light {
+    background-color: #f3d583;
+}
+
+.color4 {
+    background-color: #60b935;
+}
+
+.color4.light {
+    background-color: #97b388;
 }
