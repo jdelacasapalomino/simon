@@ -24,7 +24,7 @@ class Game {
 
     generateSequence() {
         let pattern = []
-        for (let i = 0; i < 10; i++) pattern.push(Math.floor(Math.random() * 4))
+        for (let i = 0; i < 98; i++) pattern.push(Math.floor(Math.random() * 4))
         return pattern
     }
 
