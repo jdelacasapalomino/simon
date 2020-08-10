@@ -1,10 +1,9 @@
 let startButton = document.querySelector(".menu__button")
 startButton.addEventListener("click", startGame)
 
-
 class Game {
 
-    static DELAY = 500
+    static get DELAY() { return 500 }
 
     constructor(button1, button2, button3, button4, level, levelIndicator) {
         this.buttons = [button1, button2, button3, button4]
@@ -29,7 +28,6 @@ class Game {
     }
 
     iluminateButton(button) {
-        console.log(button)
         button.classList.add("light")
         setTimeout(() => button.classList.remove("light"), Game.DELAY)
     }
