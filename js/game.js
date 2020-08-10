@@ -8,14 +8,18 @@ class Game {
 
     constructor(button1, button2, button3, button4, level, levelIndicator) {
         this.buttons = [button1, button2, button3, button4]
-        this.level = level
         this.levelIndicator = levelIndicator
+        this.setLevel(level)
     }
 
     start() {
         this.sequence = this.generateSequence()
-        this.levelIndicator.innerHTML = this.level
         setTimeout(() => this.showSequence(), Game.DELAY)
+    }
+
+    setLevel(level) {
+        this.level = level
+        this.levelIndicator.innerHTML = level
     }
 
     generateSequence() {
@@ -24,14 +28,16 @@ class Game {
         return pattern
     }
 
+    iluminateButton(button) {
+        console.log(button)
+        button.classList.add("light")
+        setTimeout(() => button.classList.remove("light"), Game.DELAY)
+    }
+
     showSequence() {
         for (let i = 0; i < this.level; i++) {
             const button = this.buttons[this.sequence[i]]
-
-            setTimeout(() => {
-                button.classList.add("light")
-                setTimeout(() => button.classList.remove("light"), Game.DELAY)
-            }, Game.DELAY * i * 2)
+            setTimeout(() => this.iluminateButton(button), Game.DELAY * i * 2)
         }
     }
 }
