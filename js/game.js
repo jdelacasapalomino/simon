@@ -6,6 +6,8 @@ class Game {
     static get DELAY() { return 500 }
 
     constructor(button1, button2, button3, button4, level, levelIndicator) {
+
+        this.chooseColor = this.chooseColor.bind(this)
         this.buttons = [button1, button2, button3, button4]
         this.levelIndicator = levelIndicator
         this.setLevel(level)
@@ -14,6 +16,7 @@ class Game {
     start() {
         this.sequence = this.generateSequence()
         setTimeout(() => this.showSequence(), Game.DELAY)
+        this.addEvents()
     }
 
     setLevel(level) {
@@ -38,6 +41,18 @@ class Game {
             setTimeout(() => this.iluminateButton(button), Game.DELAY * i * 2)
         }
     }
+
+    addEvents(){
+        this.buttons[0].addEventListener("click", this.chooseColor)
+        this.buttons[1].addEventListener("click", this.chooseColor)
+        this.buttons[2].addEventListener("click", this.chooseColor)
+        this.buttons[3].addEventListener("click", this.chooseColor)
+    }
+
+    chooseColor(event){
+        let buttonId = this.buttons.indexOf(event.target)
+        console.log(buttonId)
+    }
 }
 
 
@@ -52,6 +67,6 @@ function startGame() {
     let menu = document.querySelector(".menu")
 
     menu.classList.add("invisible")
-    window.game = new Game(button1, button2, button3, button4, 10, levelIndicator)
+    window.game = new Game(button1, button2, button3, button4, 1, levelIndicator)
     window.game.start()
 }
