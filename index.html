@@ -9,12 +9,13 @@
 </head>
 
 <body>
-    
+
     <header class="header">
         <p class="header__title">Simon Says!</p>
-        <p class="header__social"><i class="fab fa-github-alt"></i><i class="fab fa-instagram"></i><i class="fab fa-twitter"></i></p>
+        <p class="header__social"><i class="fab fa-github-alt"></i><i class="fab fa-instagram"></i><i
+                class="fab fa-twitter"></i></p>
     </header>
-    
+
     <section class="game">
         <div class="game__button-container">
             <div class="game__button color1"></div>
@@ -23,19 +24,24 @@
             <div class="game__button color4"></div>
         </div>
     </section>
-    
+
     <section class="menu">
         <button class="menu__button">Start!</button>
     </section>
-    
+
     <div class="footer">
         <!-- <p class="footer__authors">Created by <span class="link">@dsouls889</span> & <span class="link">@Panchito</span></p> -->
         <p class="footer__level">0</p>
     </div>
-    
+
     <script src="js/window.js"></script>
     <script src="https://kit.fontawesome.com/01c6b4051b.js" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/game.js"></script>
+    <script>
+        let startButton = document.querySelector(".menu__button")
+        startButton.addEventListener("click", startGame)
+    </script>
 </body>
 
 </html>

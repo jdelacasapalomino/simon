@@ -147,6 +147,10 @@ body {
     text-decoration: underline;
 }
 
+.swal-modal{
+    font-family: 'Mulish', sans-serif;
+}
+
 .invisible {
     display: none;
 }

@@ -1,15 +1,14 @@
-let startButton = document.querySelector(".menu__button")
-startButton.addEventListener("click", startGame)
-
 class Game {
 
     static get DELAY() { return 500 }
     static get MAX_LEVEL() { return 10 }
 
     constructor(button1, button2, button3, button4, level, levelIndicator) {
-        
-        this.chooseColor = this.chooseColor.bind(this)
+
         this.start = this.start.bind(this)
+        this.addEvents = this.addEvents.bind(this)
+        this.chooseColor = this.chooseColor.bind(this)
+        this.removeEvents = this.removeEvents.bind(this)
 
         this.sequence = this.generateSequence()
         this.buttons = [button1, button2, button3, button4]
@@ -41,22 +40,36 @@ class Game {
     showSequence() {
         for (let i = 0; i < this.level; i++) {
             const button = this.buttons[this.sequence[i]]
+
             setTimeout(() => this.iluminateButton(button), Game.DELAY * i * 2)
+            setTimeout(this.addEvents, Game.DELAY * (this.level - 1) * 2)
         }
     }
-
+    
     addEvents() {
         this.buttons[0].addEventListener("click", this.chooseColor)
         this.buttons[1].addEventListener("click", this.chooseColor)
         this.buttons[2].addEventListener("click", this.chooseColor)
         this.buttons[3].addEventListener("click", this.chooseColor)
     }
-
+    
     removeEvents() {
         this.buttons[0].removeEventListener("click", this.chooseColor)
         this.buttons[1].removeEventListener("click", this.chooseColor)
         this.buttons[2].removeEventListener("click", this.chooseColor)
         this.buttons[3].removeEventListener("click", this.chooseColor)
+    }
+    
+    lose() {
+        swal('Simon Says!','You lose', 'error').then(() => {
+            this.removeEvents()
+            this.setLevel(1)
+            setTimeout(this.start, Game.DELAY * 2)
+        })
+    }
+
+    win() {
+        swal('Simon Says!', "You win", 'success').then(this.removeEvents)
     }
 
     chooseColor(event) {
@@ -67,21 +80,19 @@ class Game {
 
         if (buttonIndex === this.sequence[this.sublevel]) {
             this.sublevel++
-
+            
             if (this.sublevel === this.level) {
-
-                this.removeEvents()
-                if (this.level  === Game.MAX_LEVEL) alert("WIN!")
+                
+                if (this.level === Game.MAX_LEVEL) this.win()
                 else {
+                    this.removeEvents()
                     this.setLevel(this.level + 1)
                     setTimeout(this.start, Game.DELAY * 2)
                 }
             }
 
         } else {
-            alert("You loose!")
-            this.setLevel(1)
-            this.start()
+            this.lose()
         }
     }
 }
