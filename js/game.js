@@ -4,30 +4,33 @@ startButton.addEventListener("click", startGame)
 class Game {
 
     static get DELAY() { return 500 }
+    static get MAX_LEVEL() { return 10 }
 
     constructor(button1, button2, button3, button4, level, levelIndicator) {
-
+        
         this.chooseColor = this.chooseColor.bind(this)
+        this.start = this.start.bind(this)
+
+        this.sequence = this.generateSequence()
         this.buttons = [button1, button2, button3, button4]
         this.levelIndicator = levelIndicator
         this.setLevel(level)
     }
 
     start() {
-        this.sequence = this.generateSequence()
-        setTimeout(() => this.showSequence(), Game.DELAY)
+        this.showSequence()
         this.addEvents()
     }
 
     setLevel(level) {
+        this.sublevel = 0
         this.level = level
         this.levelIndicator.innerHTML = level
     }
 
     generateSequence() {
-        let pattern = []
-        for (let i = 0; i < 98; i++) pattern.push(Math.floor(Math.random() * 4))
-        return pattern
+        let sequence = new Array(Game.MAX_LEVEL).fill(0).map(n => Math.floor(Math.random() * 4))
+        return sequence
     }
 
     iluminateButton(button) {
@@ -42,16 +45,44 @@ class Game {
         }
     }
 
-    addEvents(){
+    addEvents() {
         this.buttons[0].addEventListener("click", this.chooseColor)
         this.buttons[1].addEventListener("click", this.chooseColor)
         this.buttons[2].addEventListener("click", this.chooseColor)
         this.buttons[3].addEventListener("click", this.chooseColor)
     }
 
-    chooseColor(event){
-        let buttonId = this.buttons.indexOf(event.target)
-        console.log(buttonId)
+    removeEvents() {
+        this.buttons[0].removeEventListener("click", this.chooseColor)
+        this.buttons[1].removeEventListener("click", this.chooseColor)
+        this.buttons[2].removeEventListener("click", this.chooseColor)
+        this.buttons[3].removeEventListener("click", this.chooseColor)
+    }
+
+    chooseColor(event) {
+        const button = event.target
+        const buttonIndex = this.buttons.indexOf(button)
+
+        this.iluminateButton(button)
+
+        if (buttonIndex === this.sequence[this.sublevel]) {
+            this.sublevel++
+
+            if (this.sublevel === this.level) {
+
+                this.removeEvents()
+                if (this.level  === Game.MAX_LEVEL) alert("WIN!")
+                else {
+                    this.setLevel(this.level + 1)
+                    setTimeout(this.start, Game.DELAY * 2)
+                }
+            }
+
+        } else {
+            alert("You loose!")
+            this.setLevel(1)
+            this.start()
+        }
     }
 }
 
