@@ -18,7 +18,7 @@ class Game {
 
     start() {
         this.showSequence()
-        this.addEvents()
+        // this.addEvents()
     }
 
     setLevel(level) {
