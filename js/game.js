@@ -45,25 +45,26 @@ class Game {
             setTimeout(this.addEvents, Game.DELAY * (this.level - 1) * 2)
         }
     }
-    
+
     addEvents() {
         this.buttons[0].addEventListener("click", this.chooseColor)
         this.buttons[1].addEventListener("click", this.chooseColor)
         this.buttons[2].addEventListener("click", this.chooseColor)
         this.buttons[3].addEventListener("click", this.chooseColor)
     }
-    
+
     removeEvents() {
         this.buttons[0].removeEventListener("click", this.chooseColor)
         this.buttons[1].removeEventListener("click", this.chooseColor)
         this.buttons[2].removeEventListener("click", this.chooseColor)
         this.buttons[3].removeEventListener("click", this.chooseColor)
     }
-    
+
     lose() {
-        swal('Simon Says!','You lose', 'error').then(() => {
+        swal('Simon Says!', 'You lose', 'error').then(() => {
             this.removeEvents()
             this.setLevel(1)
+            this.sequence = this.generateSequence()
             setTimeout(this.start, Game.DELAY * 2)
         })
     }
@@ -80,9 +81,9 @@ class Game {
 
         if (buttonIndex === this.sequence[this.sublevel]) {
             this.sublevel++
-            
+
             if (this.sublevel === this.level) {
-                
+
                 if (this.level === Game.MAX_LEVEL) this.win()
                 else {
                     this.removeEvents()
